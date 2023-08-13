@@ -1,6 +1,6 @@
 {
   "name": "rss-parser",
-  "version": "4.0.3",
+  "version": "4.0.5",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -21,11 +21,15 @@
     "mocha": "^10.2.0",
     "puppeteer": "^5.2.1",
     "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "bufferhelper": "^0.2.1",
     "entities": "^2.0.3",
-    "xml2js": "^0.5.0"
+    "iconv-lite": "^0.6.3",
+    "iso-8859-2": "^1.0.2",
+    "xml2js": "^0.5.0",
+    "zlib": "^1.0.5"
   },
   "directories": {
     "test": "test"

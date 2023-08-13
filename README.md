@@ -263,7 +263,7 @@ To update the output files with your changes, run
 
 ### Publishing Releases
 ```bash
-npm run build
+NODE_OPTIONS=--openssl-legacy-provider npm run build
 git commit -a -m "Build distribution"
 npm version minor # or major/patch
 npm publish
