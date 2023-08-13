@@ -2,13 +2,6 @@ import { Options } from 'xml2js';
 import { RequestOptions } from 'https';
 
 declare namespace Parser {
-  type ChannelLink = string | {
-    $: {
-      rel: string;
-      href: string;
-    }
-  };
-
   type CustomFieldItem<U> = keyof U | (string | { keepArray: boolean })[]
     
   export interface CustomFields<T, U> {
@@ -34,19 +27,13 @@ declare namespace Parser {
 
   export interface Item {
     link?: string;
-    links?: ChannelLink[];
-    hub?: string;
     guid?: string;
     title?: string;
     pubDate?: string;
     creator?: string;
-    author?: string;
     summary?: string;
     content?: string;
     isoDate?: string;
-    thumbnail?: string;
-    videoid?: string;
-    description?: string;
     categories?: string[];
     contentSnippet?: string;
     enclosure?: Enclosure;
@@ -72,11 +59,9 @@ declare namespace Parser {
     items: (U & Item)[];
     feedUrl?: string;
     description?: string;
-    hubs?: string[];
     itunes?: {
       [key: string]: any;
       image?: string;
-      new_feed_url?: string;
       owner?: {
         name?: string;
         email?: string;

@@ -118,14 +118,14 @@ module.exports = __webpack_require__(/*! ./lib/parser */ "./lib/parser.js");
 /***/ (function(module, exports) {
 
 var fields = module.exports = {};
-fields.feed = [['author', 'creator'], ['dc:publisher', 'publisher'], ['dc:creator', 'creator'], ['a10:author', 'creator'], ['dc:source', 'source'], ['dc:title', 'title'], ['dc:type', 'type'], 'title', 'description', 'author', 'pubDate', 'webMaster', 'managingEditor', 'generator', 'link', 'language', 'copyright', 'lastBuildDate', 'docs', 'generator', 'ttl', 'rating', 'skipHours', 'skipDays'];
-fields.item = [['author', 'creator'], ['dc:date', 'date'], ['dc:language', 'language'], ['dc:rights', 'rights'], ['dc:source', 'source'], ['dc:title', 'title'], 'title', 'subtitle', 'link', 'pubDate', 'author', 'summary', ['content:encoded', 'content:encoded', {
+fields.feed = [['author', 'creator'], ['dc:publisher', 'publisher'], ['dc:creator', 'creator'], ['dc:source', 'source'], ['dc:title', 'title'], ['dc:type', 'type'], 'title', 'description', 'author', 'pubDate', 'webMaster', 'managingEditor', 'generator', 'link', 'language', 'copyright', 'lastBuildDate', 'docs', 'generator', 'ttl', 'rating', 'skipHours', 'skipDays'];
+fields.item = [['author', 'creator'], ['dc:creator', 'creator'], ['dc:date', 'date'], ['dc:language', 'language'], ['dc:rights', 'rights'], ['dc:source', 'source'], ['dc:title', 'title'], 'title', 'link', 'pubDate', 'author', 'summary', ['content:encoded', 'content:encoded', {
   includeSnippet: true
-}], 'enclosure', 'dc:creator', 'dc:date', 'comments', 'thumbnail', ['media:thumbnail', 'thumbnail'], 'section', 'image'];
+}], 'enclosure', 'dc:creator', 'dc:date', 'comments'];
 var mapItunesField = function mapItunesField(f) {
   return ['itunes:' + f, f];
 };
-fields.podcastFeed = ['author', 'subtitle', 'summary', 'explicit', 'new_feed_url'].map(mapItunesField);
+fields.podcastFeed = ['author', 'subtitle', 'summary', 'explicit'].map(mapItunesField);
 fields.podcastItem = ['author', 'subtitle', 'summary', 'explicit', 'duration', 'image', 'episode', 'image', 'season', 'keywords', 'episodeType'].map(mapItunesField);
 
 /***/ }),
@@ -141,9 +141,6 @@ fields.podcastItem = ['author', 'subtitle', 'summary', 'explicit', 'duration', '
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -159,7 +156,7 @@ var DEFAULT_HEADERS = {
   'User-Agent': 'rss-parser',
   'Accept': 'application/rss+xml'
 };
-var DEFAULT_MAX_REDIRECTS = 10;
+var DEFAULT_MAX_REDIRECTS = 5;
 var DEFAULT_TIMEOUT = 60000;
 var Parser = /*#__PURE__*/function () {
   function Parser() {
@@ -220,74 +217,52 @@ var Parser = /*#__PURE__*/function () {
     }
   }, {
     key: "parseURL",
-    value: function () {
-      var _parseURL = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(feedUrl, callback) {
-        var _this2 = this;
-        var redirectCount,
-          xml,
-          get,
-          urlParts,
-          headers,
-          timeout,
-          prom,
-          _args = arguments;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              redirectCount = _args.length > 2 && _args[2] !== undefined ? _args[2] : 0;
-              xml = '';
-              get = feedUrl.indexOf('https') === 0 ? https.get : http.get;
-              urlParts = url.parse(feedUrl);
-              headers = Object.assign({}, DEFAULT_HEADERS, this.options.headers);
-              timeout = null;
-              prom = new Promise(function (resolve, reject) {
-                var requestOpts = Object.assign({
-                  headers: headers
-                }, urlParts, _this2.options.requestOptions);
-                var req = get(requestOpts, function (res) {
-                  if (_this2.options.maxRedirects && res.statusCode >= 300 && res.statusCode < 400 && res.headers['location']) {
-                    if (redirectCount === _this2.options.maxRedirects) {
-                      return reject(new Error("Too many redirects"));
-                    } else {
-                      var newLocation = url.resolve(feedUrl, res.headers['location']);
-                      return _this2.parseURL(newLocation, null, redirectCount + 1).then(resolve, reject);
-                    }
-                  } else if (res.statusCode >= 300) {
-                    return reject(new Error("Status code " + res.statusCode));
-                  }
-                  var encoding = utils.getEncodingFromContentType(res.headers['content-type']);
-                  res.setEncoding(encoding);
-                  res.on('data', function (chunk) {
-                    xml += chunk;
-                  });
-                  res.on('end', function () {
-                    return _this2.parseString(xml).then(resolve, reject);
-                  });
-                });
-                req.on('error', reject);
-                timeout = setTimeout(function () {
-                  return reject(new Error("Request timed out after " + _this2.options.timeout + "ms"));
-                }, _this2.options.timeout);
-              }).then(function (data) {
-                clearTimeout(timeout);
-                return Promise.resolve(data);
-              }, function (e) {
-                clearTimeout(timeout);
-                return Promise.reject(e);
-              });
-              prom = utils.maybePromisify(callback, prom);
-              return _context.abrupt("return", prom);
-            case 9:
-            case "end":
-              return _context.stop();
+    value: function parseURL(feedUrl, callback) {
+      var _this2 = this;
+      var redirectCount = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var xml = '';
+      var get = feedUrl.indexOf('https') === 0 ? https.get : http.get;
+      var urlParts = url.parse(feedUrl);
+      var headers = Object.assign({}, DEFAULT_HEADERS, this.options.headers);
+      var timeout = null;
+      var prom = new Promise(function (resolve, reject) {
+        var requestOpts = Object.assign({
+          headers: headers
+        }, urlParts, _this2.options.requestOptions);
+        var req = get(requestOpts, function (res) {
+          if (_this2.options.maxRedirects && res.statusCode >= 300 && res.statusCode < 400 && res.headers['location']) {
+            if (redirectCount === _this2.options.maxRedirects) {
+              return reject(new Error("Too many redirects"));
+            } else {
+              var newLocation = url.resolve(feedUrl, res.headers['location']);
+              return _this2.parseURL(newLocation, null, redirectCount + 1).then(resolve, reject);
+            }
+          } else if (res.statusCode >= 300) {
+            return reject(new Error("Status code " + res.statusCode));
           }
-        }, _callee, this);
-      }));
-      function parseURL(_x, _x2) {
-        return _parseURL.apply(this, arguments);
-      }
-      return parseURL;
-    }()
+          var encoding = utils.getEncodingFromContentType(res.headers['content-type']);
+          res.setEncoding(encoding);
+          res.on('data', function (chunk) {
+            xml += chunk;
+          });
+          res.on('end', function () {
+            return _this2.parseString(xml).then(resolve, reject);
+          });
+        });
+        req.on('error', reject);
+        timeout = setTimeout(function () {
+          return reject(new Error("Request timed out after " + _this2.options.timeout + "ms"));
+        }, _this2.options.timeout);
+      }).then(function (data) {
+        clearTimeout(timeout);
+        return Promise.resolve(data);
+      }, function (e) {
+        clearTimeout(timeout);
+        return Promise.reject(e);
+      });
+      prom = utils.maybePromisify(callback, prom);
+      return prom;
+    }
   }, {
     key: "buildAtomFeed",
     value: function buildAtomFeed(xmlObj) {
@@ -298,8 +273,6 @@ var Parser = /*#__PURE__*/function () {
       utils.copyFromXML(xmlObj.feed, feed, this.options.customFields.feed);
       if (xmlObj.feed.link) {
         feed.link = utils.getLink(xmlObj.feed.link, 'alternate', 0);
-        feed.links = xmlObj.feed.link;
-        feed.hub = utils.getLink(xmlObj.feed.link, 'hub', 0);
         feed.feedUrl = utils.getLink(xmlObj.feed.link, 'self', 1);
       }
       if (xmlObj.feed.title) {
@@ -335,9 +308,6 @@ var Parser = /*#__PURE__*/function () {
         item.content = utils.getContent(entry.content[0]);
         item.contentSnippet = utils.getSnippet(item.content);
       }
-      if (entry["yt:videoId"] && entry["yt:videoId"].length) item.videoid = entry["yt:videoId"][0];
-      if (entry["media:group"][0]["media:description"] && entry["media:group"][0]["media:description"].length) item.description = entry["media:group"][0]["media:description"][0];
-      if (entry["media:group"][0]["media:thumbnail"][0]["$"]["url"] && entry["media:group"][0]["media:thumbnail"].length) item.thumbnail = entry["media:group"][0]["media:thumbnail"][0]["$"]["url"];
       if (entry.summary && entry.summary.length) {
         item.summary = utils.getContent(entry.summary[0]);
       }
@@ -384,17 +354,7 @@ var Parser = /*#__PURE__*/function () {
       var feedFields = fields.feed.concat(this.options.customFields.feed);
       var itemFields = fields.item.concat(this.options.customFields.item);
       if (channel['atom:link'] && channel['atom:link'][0] && channel['atom:link'][0].$) {
-        //feed.feedUrl = channel['atom:link'][0].$.href;
-        var hubs = [];
-        var links = channel['atom:link'];
-        links.forEach(function (link) {
-          if (link.$ && link.$.rel == 'hub') {
-            hubs.push(link.$.href);
-          } else if (link.$ && link.$.ref == 'self') {
-            feed.feedUrl = link.$.href;
-          }
-        });
-        feed.hubs = hubs;
+        feed.feedUrl = channel['atom:link'][0].$.href;
       }
       if (channel.image && channel.image[0] && channel.image[0].url) {
         feed.image = {};
@@ -410,11 +370,6 @@ var Parser = /*#__PURE__*/function () {
         feed.paginationLinks = paginationLinks;
       }
       utils.copyFromXML(channel, feed, feedFields);
-      if (channel.link) {
-        feed.hub = utils.getLink(channel.link, 'hub', 0);
-        feed.links = channel.link;
-        feed.link = feed.links[0];
-      }
       feed.items = items.map(function (xmlItem) {
         return _this4.parseItemRss(xmlItem, itemFields);
       });
@@ -426,12 +381,6 @@ var Parser = /*#__PURE__*/function () {
       var item = {};
       utils.copyFromXML(xmlItem, item, itemFields);
       if (xmlItem.enclosure) {
-        if (!Array.isArray(item.enclosureList)) {
-          item.enclosureList = [];
-        }
-        xmlItem.enclosure.forEach(function (enclosure) {
-          item.enclosureList.push(enclosure.$);
-        });
         item.enclosure = xmlItem.enclosure[0].$;
       }
       if (xmlItem.description) {
@@ -442,15 +391,10 @@ var Parser = /*#__PURE__*/function () {
         item.guid = xmlItem.guid[0];
         if (item.guid._) item.guid = item.guid._;
       }
-      if (item['rdf:about']) {
-        item['rdf:about'] = xmlItem.$['rdf:about'];
-      }
       if (xmlItem.$ && xmlItem.$['rdf:about']) {
         item['rdf:about'] = xmlItem.$['rdf:about'];
       }
       if (xmlItem.category) item.categories = xmlItem.category;
-      var mediaContent = xmlItem['media:content'][0].$;
-      if (mediaContent) item.mediaContent = mediaContent;
       this.setISODate(item);
       return item;
     }
@@ -468,9 +412,6 @@ var Parser = /*#__PURE__*/function () {
       var items = channel.item || [];
       var categories = [];
       feed.itunes = {};
-      if (channel['itunes:new-feed-url'] && channel['itunes:new-feed-url'][0]) {
-        feed.itunes.new_feed_url = channel['itunes:new-feed-url'][0];
-      }
       if (channel['itunes:owner']) {
         var owner = {};
         if (channel['itunes:owner'][0]['itunes:name']) {
@@ -635,7 +576,7 @@ utils.copyFromXML = function (xml, dest, fields) {
       keepArray = _options.keepArray,
       includeSnippet = _options.includeSnippet;
     if (xml[from] !== undefined) {
-      dest[to] = keepArray ? xml[from] : xml[from].length === 1 ? xml[from][0] : xml[from];
+      dest[to] = keepArray ? xml[from] : xml[from][0];
     }
     if (dest[to] && typeof dest[to]._ === 'string') {
       dest[to] = dest[to]._;
