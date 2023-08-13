@@ -395,6 +395,8 @@ var Parser = /*#__PURE__*/function () {
         item['rdf:about'] = xmlItem.$['rdf:about'];
       }
       if (xmlItem.category) item.categories = xmlItem.category;
+      var mediaContent = xmlItem['media:content'][0].$;
+      if (mediaContent) item.mediaContent = mediaContent;
       this.setISODate(item);
       return item;
     }
