@@ -644,7 +644,7 @@ utils.getSnippet = function (str) {
 utils.getLink = function (links, rel, fallbackIdx) {
   if (!links) return;
   for (var i = 0; i < links.length; ++i) {
-    if (links[i].$ && links[i].$.rel && links[i].$.rel === rel) return links[i].$.href;else if (typeof links[i] == 'string') return links[i];
+    if (links[i].$ && (links[i].$.rel && links[i].$.rel === rel || links[i].$.href)) return links[i].$.href;else if (typeof links[i] == 'string') return links[i];
   }
   if (links[fallbackIdx] && links[fallbackIdx].$ && links[fallbackIdx].href) return links[fallbackIdx].$.href;
 };
