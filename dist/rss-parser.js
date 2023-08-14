@@ -379,8 +379,8 @@ var Parser = /*#__PURE__*/function () {
         item.contentSnippet = utils.getSnippet(item.content);
       }
       if (entry["yt:videoId"] && entry["yt:videoId"].length) item.videoid = entry["yt:videoId"][0];
-      if (entry["media:group"][0]["media:description"] && entry["media:group"][0]["media:description"].length) item.description = entry["media:group"][0]["media:description"][0];
-      if (entry["media:group"][0]["media:thumbnail"][0]["$"]["url"] && entry["media:group"][0]["media:thumbnail"].length) item.thumbnail = entry["media:group"][0]["media:thumbnail"][0]["$"]["url"];
+      if (entry["media:group"] && entry["media:group"] instanceof Array && entry["media:group"][0]["media:description"] && entry["media:group"][0]["media:description"].length) item.description = entry["media:group"][0]["media:description"][0];
+      if (entry["media:group"] && entry["media:group"] instanceof Array && entry["media:group"][0]["media:thumbnail"][0]["$"]["url"] && entry["media:group"][0]["media:thumbnail"].length) item.thumbnail = entry["media:group"][0]["media:thumbnail"][0]["$"]["url"];
       if (entry.summary && entry.summary.length) {
         item.summary = utils.getContent(entry.summary[0]);
       }
@@ -746,7 +746,7 @@ utils.needDecodeEncoding = function (encoding) {
   return NEED_DECODE_ENCODINGS.indexOf(encoding) > -1;
 };
 utils.decode = function (buffer, encoding) {
-  return DECODING_FUNCTIONS[encoding](buffer);
+  return DECODING_FUNCTIONS[encoding] ? DECODING_FUNCTIONS[encoding](buffer) : buffer.toString();
 };
 
 /***/ }),
