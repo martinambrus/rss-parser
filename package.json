@@ -1,6 +1,6 @@
 {
   "name": "rss-parser",
-  "version": "4.0.7",
+  "version": "4.1.0",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -19,17 +19,14 @@
     "chai": "^3.4.1",
     "express": "^4.16.3",
     "mocha": "^10.2.0",
-    "puppeteer": "^5.2.1",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "puppeteer": "^5.5.0"
   },
   "dependencies": {
-    "bufferhelper": "^0.2.1",
     "entities": "^2.0.3",
-    "iconv-lite": "^0.6.3",
-    "iso-8859-2": "^1.0.2",
-    "xml2js": "^0.5.0",
-    "zlib": "^1.0.5"
+    "iso-8859-2": "^3.0.4",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4",
+    "xml2js": "^0.5.0"
   },
   "directories": {
     "test": "test"
@@ -39,7 +36,7 @@
     "url": "git+https://github.com/martinambrus/rss-parser.git"
   },
   "bugs": {
-    "url": "https://github.com/martinambrus/rss-parser/issues"
+    "url": "https://github.com/bobby-brennan/rss-parser/issues"
   },
   "homepage": "https://github.com/martinambrus/rss-parser#readme",
   "description": "A lightweight RSS parser, for Node and the browser",
